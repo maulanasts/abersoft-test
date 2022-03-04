@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController, ModalController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
 import { FormControl, FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { HttpClient } from '@angular/common/http';
+
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-create-user',
@@ -13,8 +15,9 @@ export class CreateUserPage implements OnInit {
   myForm: FormGroup;
   isSubmitted: boolean;
 
-  constructor(
-    public alertController: AlertController,
+  post_result:string;
+
+  constructor( 
     public http: HttpClient,
     public modalController: ModalController,
   ) {
@@ -42,15 +45,8 @@ export class CreateUserPage implements OnInit {
       body.append('password', this.myForm.get('password').value);
 
       this.http.post(url, body).subscribe(async (res: any) => {
-
-        const alert = await this.alertController.create({
-          header: 'Success',
-          message: JSON.stringify(res),
-          buttons: ['OK']
-        });
-
-        await alert.present();
-
+        res.createdAt = moment(res.createdAt).format('YYYY-MM-DD HH:mm');
+        this.post_result=JSON.stringify(res);
       }, error => {
         console.error(error);
       });

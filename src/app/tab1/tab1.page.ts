@@ -34,7 +34,7 @@ export class Tab1Page {
         this.page += 1;
 
         // if(this.page== res.total_pages){
-        ev_infi.target.complete();
+        if (ev_infi) { ev_infi.target.complete() };
         // }
       } else {
         this.users = [];
@@ -56,7 +56,7 @@ export class Tab1Page {
       }
     };
 
-    this.router.navigate(['/tabs/tab1/view-user'], params); 
+    this.router.navigate(['/tabs/tab1/view-user'], params);
   }
 
 }
