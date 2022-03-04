@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Create New user</ion-title>
+    <ion-buttons slot="end">
+      <ion-icon class="toolbar-button" name="close-circle-outline" (click)="modalController.dismiss()"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="myForm" (ngSubmit)="create()">
+
+    <ion-item class="ion-no-padding ion-margin-bottom">
+      <ion-label position="stacked">First Name</ion-label>
+      <ion-input formControlName="first_name"
+        [ngClass]="(isSubmitted && myForm.get('first_name').hasError('required'))?'form-invalid':''">
+      </ion-input>
+    </ion-item>
+    <ion-chip color="danger" *ngIf="isSubmitted && myForm.get('first_name').hasError('required')">
+      The first name field is required.
+    </ion-chip>
+
+    <ion-item class="ion-no-padding ion-margin-bottom">
+      <ion-label position="stacked">Last Name</ion-label>
+      <ion-input formControlName="last_name"
+        [ngClass]="(isSubmitted && myForm.get('last_name').hasError('required'))?'form-invalid':''">
+      </ion-input>
+    </ion-item>
+
+    <ion-item class="ion-no-padding ion-margin-bottom">
+      <ion-label position="stacked">Email</ion-label>
+      <ion-input formControlName="email"
+        [ngClass]="(isSubmitted && myForm.get('email').hasError('required'))?'form-invalid':''">
+      </ion-input>
+    </ion-item>
+    <ion-chip color="danger" *ngIf="isSubmitted && myForm.get('email').hasError('required')">
+      The email field is required.
+    </ion-chip>
+    <ion-chip color="danger" *ngIf="isSubmitted && myForm.get('email').hasError('pattern')">
+      The email address is not valid.
+    </ion-chip>
+
+    <ion-item class="ion-no-padding ion-margin-bottom">
+      <ion-label position="stacked">Password</ion-label>
+      <ion-input type="password" formControlName="password"
+        [ngClass]="(isSubmitted && myForm.get('password').hasError('required'))?'form-invalid':''"></ion-input>
+    </ion-item>
+    <ion-chip color="danger" *ngIf="isSubmitted && myForm.get('password').hasError('required')">
+      The password field is required.
+    </ion-chip>
+
+    <ion-item class="ion-no-padding ion-margin-bottom">
+      <ion-label position="stacked">Password Confirmation</ion-label>
+      <ion-input type="password" formControlName="password_confirm"
+        [ngClass]="isSubmitted && (myForm.get('password_confirm').invalid==true || myForm.get('password_confirm').value != myForm.get('password').value)?'form-invalid':''">
+      </ion-input>
+    </ion-item>
+    <ion-chip color="danger" *ngIf="isSubmitted && myForm.get('password_confirm').hasError('required')">
+      The password confirmation field is required.
+    </ion-chip>
+    <ion-chip color="danger"
+      *ngIf="isSubmitted && myForm.get('password_confirm').value != myForm.get('password').value">
+      The password confirmation does not match.
+    </ion-chip>
+
+    <div class="ion-padding ion-text-center" style="width:100%;">
+      <ion-button class="btn-simpan" type="submit">Submit</ion-button>
+    </div>
+
+  </form>
+</ion-content>

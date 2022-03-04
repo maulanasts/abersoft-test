@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <!-- <ion-back-button></ion-back-button> -->
+      <ion-icon class="toolbar-button" name="arrow-back-outline" [routerLink]="['']" routerDirection="back"></ion-icon>
+    </ion-buttons>
+    <ion-title>User Detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="light" class="ion-padding">
+
+  <div class="my-avatar">
+    <img [src]="user_info.avatar">
+  </div>
+
+  <div class="my-card">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4">Id</ion-col>
+        <ion-col>: {{user_info.id}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4">Full Name</ion-col>
+        <ion-col>: {{user_info.first_name}} {{user_info.last_name}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4">Email</ion-col>
+        <ion-col>: {{user_info.email}}</ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+</ion-content>

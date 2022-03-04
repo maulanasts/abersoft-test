@@ -16,7 +16,7 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -24,3 +24,22 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.my-card {
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    box-shadow: 1px 1px 1px #ccc;
+    margin: 9px;
+}
+
+.toolbar-button{
+    font-size: 26px;
+}
+
+ion-chip {
+    border-radius: 0;
+    font-size: 13px; 
+    margin: -8px 0 10px 0 ;
+    padding: 0 6px ;
+}

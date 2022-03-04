@@ -1,17 +1,25 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Home
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content color="light" class="ion-padding">
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <div *ngFor="let db of users" class="ion-padding my-card">
+    <ion-item class="ion-no-padding" lines="none" (click)="detail(db)" >
+      <ion-avatar slot="start">
+        <img [src]="db.avatar">
+      </ion-avatar>
+      <ion-label>{{db.first_name}} {{db.last_name}}</ion-label>
+    </ion-item>
+  </div>
+
+  <ion-infinite-scroll (ionInfinite)="load_data($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
 </ion-content>
